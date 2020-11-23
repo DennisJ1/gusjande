@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './ToDoModel.dart';
+import 'ToDoModel.dart';
 
-class SecondView extends StatefulWidget {
+class CreateTaskView extends StatefulWidget {
   final ToDoModel todo;
 
-  SecondView(this.todo);
+  CreateTaskView(this.todo);
 
   @override
   State<StatefulWidget> createState() {
-    return SecondViewState(todo);
+    return CreateTaskViewState(todo);
   }
 }
 
-class SecondViewState extends State<SecondView> {
+class CreateTaskViewState extends State<CreateTaskView> {
   String text;
 
   TextEditingController textEditingController;
 
-  SecondViewState(ToDoModel todo) {
+  CreateTaskViewState(ToDoModel todo) {
     this.text = todo.text;
 
     textEditingController = TextEditingController();

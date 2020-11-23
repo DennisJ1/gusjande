@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './ToDoList.dart';
-import './SecondView.dart';
+import 'CreateTaskView.dart';
 import './ToDoModel.dart';
 
 class ToDoListView extends StatefulWidget {
@@ -39,8 +39,10 @@ class _ToDoListViewState extends State<ToDoListView> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () async {
-          await Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SecondView(ToDoModel())));
+          await Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CreateTaskView(ToDoModel())));
           // if (newToDo != null) {
           //   Provider.of<MyState>(context, listen: false).addToDo(newToDo);
           // }
