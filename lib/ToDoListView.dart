@@ -43,9 +43,6 @@ class _ToDoListViewState extends State<ToDoListView> {
               context,
               MaterialPageRoute(
                   builder: (context) => CreateTaskView(ToDoModel())));
-          // if (newToDo != null) {
-          //   Provider.of<MyState>(context, listen: false).addToDo(newToDo);
-          // }
         },
       ),
     );

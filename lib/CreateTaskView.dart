@@ -75,7 +75,6 @@ class CreateTaskViewState extends State<CreateTaskView> {
                 .addToDo(ToDoModel(text: textEditingController.text));
             Navigator.pop(context, ToDoModel(text: textEditingController.text));
           },
-          // disabledColor: Color(0xFFFFFFFF),
           color: Color(0xFFFFFFFF),
           child: Text('+ Add',
               style: TextStyle(

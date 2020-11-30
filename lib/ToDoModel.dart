@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'ToDoAPI.dart';
 
 class ToDoModel {
+  String id;
   String text;
   bool isDone;
 
-  ToDoModel({this.text, this.isDone = false});
+  ToDoModel({this.id, this.text, this.isDone = false});
 }
 
 class MyState extends ChangeNotifier {
@@ -12,8 +14,13 @@ class MyState extends ChangeNotifier {
 
   List<ToDoModel> get list => _list;
 
-  void addToDo(ToDoModel todo) {
-    _list.add(todo);
+  MyState() {
+    _initializeList();
+  }
+
+  void addToDo(ToDoModel todo) async {
+    _list = await ToDoApi.createTodo(todo);
+    // _list.add(todo);
     notifyListeners();
   }
 
@@ -27,8 +34,22 @@ class MyState extends ChangeNotifier {
     return _list;
   }
 
-  void removeToDo(ToDoModel todo) {
-    _list.remove(todo);
+  void _initializeList() async {
+    this._list = await ToDoApi.fetchTodo();
     notifyListeners();
   }
+
+  void removeItem(ToDoModel todo) async {
+    _list = await ToDoApi.deleteFromList(todo);
+    notifyListeners();
+  }
+
+  void updateList(ToDoModel todo) async {
+    _list = await ToDoApi.putTodo(todo);
+    notifyListeners();
+  }
+  // void removeToDo(ToDoModel todo) {
+  //   _list.remove(todo);
+  //   notifyListeners();
+  // }
 }

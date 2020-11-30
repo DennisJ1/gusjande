@@ -23,6 +23,7 @@ class _ToDoListState extends State<ToDoList> {
   }
 
   Widget _toDoItem(ToDoModel todo, context) {
+    var state = Provider.of<MyState>(context, listen: false);
     return Column(
       children: [
         ListTile(
@@ -31,6 +32,7 @@ class _ToDoListState extends State<ToDoList> {
             onChanged: (bool value) {
               setState(() {
                 todo.isDone = value;
+                state.updateList(todo);
               });
             },
           ),
@@ -44,7 +46,8 @@ class _ToDoListState extends State<ToDoList> {
           trailing: IconButton(
             icon: Icon(Icons.delete),
             onPressed: () {
-              Provider.of<MyState>(context, listen: false).removeToDo(todo);
+              state.removeItem(todo);
+              //Provider.of<MyState>(context, listen: false).removeToDo(todo);
             },
           ),
         ),
@@ -52,13 +55,3 @@ class _ToDoListState extends State<ToDoList> {
     );
   }
 }
-
-// class ToDoView extends StatelessWidget {
-//   final ToDoModel todo;
-//   ToDoView(this.todo);
-
-// //   Widget build(BuildContext context) {
-// //     return Scaffold(appBar: AppBar(), body: Center(child: ToDoWidget(todo)));
-// //   }
-// // }
-// }
