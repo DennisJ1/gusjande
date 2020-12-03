@@ -39,6 +39,8 @@ class _ToDoListState extends State<ToDoList> {
           title: Text(
             todo.text,
             style: TextStyle(
+              decoration:
+                  todo.isDone == true ? TextDecoration.lineThrough : null,
               fontSize: 24,
               color: Colors.blueGrey,
             ),
